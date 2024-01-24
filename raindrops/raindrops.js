@@ -3,22 +3,16 @@
 // convenience to get you started writing code faster.
 //
 
+const RAINDROPS = [
+    { factor: 3, sound: 'Pling' },
+    { factor: 5, sound: 'Plang' },
+    { factor: 7, sound: 'Plong' }
+]
+
 export function convert(number) {
-    let result = '';
-    if (number % 3 === 0) {
-        result += 'Pling';
-    }
-    if (number % 5 === 0) {
-        result += 'Plang';
-    }
-    if (number % 7 === 0) {
-        result += 'Plong';
-    }
-
-    if (result === '') {
-        return `${number}`;
-    }
-
-    return result;
+    const result = RAINDROPS
+        .filter( drop => number % drop.factor === 0)
+        .map( drop => drop.sound )
+        .join('');
+    return result || `${number}`;
 };
-
